@@ -1,0 +1,532 @@
+﻿<Window
+    x:Class="EEG.View.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:EEG.View"
+    Title="SettingsWindow"
+    Width="350"
+    Height="550"
+    mc:Ignorable="d">
+
+    <!--<Window.Resources>
+
+        <Style x:Key="SettingGroupTitle" TargetType="Border">
+            <Setter Property="Background" Value="#CECECE" />
+            <Setter Property="Margin" Value="5,10,5,5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+
+
+        <Style x:Key="SettingItemGrid" TargetType="Grid">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="SettingNameTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+
+        <Style x:Key="ToggleSwitchStyle" TargetType="ToggleButton">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+
+                            <Border
+                                x:Name="SwitchBackground"
+                                CornerRadius="12.5"
+                                Background="LightGray" />
+
+                            <Ellipse
+                                x:Name="SwitchThumb"
+                                Width="21"
+                                Height="21"
+                                Margin="0,2,29,2"
+                                Fill="White" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="SwitchBackground" Property="Background" Value="#4CAF50" />
+                                <Setter TargetName="SwitchThumb" Property="Margin" Value="27,2,2,2" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="SwitchBackground" Property="Background" Value="LightGray" />
+                                <Setter TargetName="SwitchThumb" Property="Margin" Value="2,2,27,2" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="SwitchBackground" Property="Background" Value="Gray" />
+                                <Setter TargetName="SwitchThumb" Property="Fill" Value="LightGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>-->
+    <Window.Resources>
+        <!-- 标题样式 -->
+        <Style x:Key="SettingGroupTitle" TargetType="Border">
+            <Setter Property="Background" Value="#CECECE" />
+            <Setter Property="Margin" Value="5,10,5,5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+
+        <!-- 每行设置项 Grid -->
+        <Style x:Key="SettingItemGrid" TargetType="Grid">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <!-- 设置项名称 -->
+        <Style x:Key="SettingNameTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <!-- 完整可点击滑块开关 -->
+        <Style x:Key="ToggleSwitchStyle" TargetType="ToggleButton">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            <!-- 背景 -->
+                            <Border
+                                x:Name="SwitchBackground"
+                                CornerRadius="12.5"
+                                Background="{TemplateBinding Background}" />
+
+                            <!-- 滑块 -->
+                            <Ellipse
+                                x:Name="SwitchThumb"
+                                Width="21"
+                                Height="21"
+                                Margin="2,2,0,2"
+                                HorizontalAlignment="Left"
+                                Fill="White">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform x:Name="ThumbTransform" X="0" />
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="SwitchBackground" Property="Background" Value="#B0B0B0" />
+                            </Trigger>
+
+                            <!-- 开启状态 -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="SwitchBackground" Property="Background" Value="#4CAF50" />
+                                <Setter TargetName="SwitchThumb" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <TranslateTransform X="25" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <!-- 禁用状态 -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="SwitchBackground" Property="Background" Value="Gray" />
+                                <Setter TargetName="SwitchThumb" Property="Fill" Value="LightGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+
+        <!-- 美观下拉列表样式 -->
+        <Style x:Key="SettingComboBox" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#964051" />
+            <Setter Property="Background" Value="#D3D3D3" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <!-- 外层圆角容器 -->
+                            <Border
+                                x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="True">
+                                <!-- 内容层使用 Grid，放 ContentPresenter（选中项）和占位提示 -->
+                                <Grid>
+                                    <!-- 选中项的显示（当有选中项时该控件会显示内容） -->
+                                    <ContentPresenter
+                                        x:Name="contentPresenter"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding SelectionBoxItem}"
+                                        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" />
+
+                                    <!-- 占位提示：当 SelectedItem == null 时显示 -->
+                                    <TextBlock
+                                        x:Name="PlaceholderText"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Text="Please Select Device"
+                                        Foreground="Gray"
+                                        IsHitTestVisible="False"
+                                        Visibility="Collapsed" />
+                                </Grid>
+                            </Border>
+
+                            <!-- 下拉按钮（增大了宽度/高度，点击区域更友好） -->
+                            <ToggleButton
+                                x:Name="toggleButton"
+                                Width="15"
+                                Height="15"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Focusable="False"
+                                IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                ClickMode="Press"
+                                Background="Transparent"
+                                BorderThickness="0">
+                                <Path
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Data="M 0 0 L 4 4 L 8 0 Z"
+                                    Fill="#964051"
+                                    Stretch="Uniform"
+                                    RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                                    </Path.RenderTransform>
+                                </Path>
+                            </ToggleButton>
+
+                            <!-- 下拉 Popup -->
+                            <Popup
+                                x:Name="PART_Popup"
+                                Placement="Bottom"
+                                IsOpen="{TemplateBinding IsDropDownOpen}"
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                PopupAnimation="Fade">
+                                <Border
+                                    x:Name="popupBorder"
+                                    Background="#CECECE"
+                                    CornerRadius="5"
+                                    SnapsToDevicePixels="True">
+                                    <ScrollViewer
+                                        MaxHeight="200"
+                                        Margin="0"
+                                        CanContentScroll="True">
+                                        <ItemsPresenter />
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        <!-- 触发器：控制占位与内容的显示 -->
+                        <ControlTemplate.Triggers>
+
+
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Window.Resources>
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="10" Orientation="Vertical">
+
+                <Border Style="{StaticResource SettingGroupTitle}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Signal &amp; Filter Settings"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#964051"
+                        FontFamily="Segoe UI" />
+                </Border>
+
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 左边名称 -->
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Light Brightness"
+                        Style="{StaticResource SettingNameTextBlock}" />
+
+                    <!-- 右边下拉选择 -->
+                    <ComboBox
+                        Name="LightCombobox"
+                        Grid.Column="1"
+                        Width="90"
+                        Style="{StaticResource SettingComboBox}"
+                        SelectedIndex="3"
+                        SelectionChanged="Light_SelectionChanged">
+                        <ComboBoxItem Content="off" />
+                        <ComboBoxItem Content="min" />
+                        <ComboBoxItem Content="medium" />
+                        <ComboBoxItem Content="max" />
+                    </ComboBox>
+                </Grid>
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 左边名称 -->
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Signal Amplification"
+                        Style="{StaticResource SettingNameTextBlock}" />
+
+                    <!-- 右边下拉选择 -->
+                    <ComboBox
+                        Name="SignalCombobox"
+                        Grid.Column="1"
+                        Width="90"
+                        Style="{StaticResource SettingComboBox}"
+                        SelectedIndex="0"
+                        SelectionChanged="Signal_SelectionChanged">
+
+                        <ComboBoxItem Content="1080" />
+                        <ComboBoxItem Content="1440" />
+                        <ComboBoxItem Content="2040" />
+                        <ComboBoxItem Content="2720" />
+                        <ComboBoxItem Content="off" />
+                    </ComboBox>
+                </Grid>
+
+
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="BP Filter"
+                        Style="{StaticResource SettingNameTextBlock}" />
+                    <ToggleButton
+                        Name="BP_FilterToggle"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource ToggleSwitchStyle}"
+                        Checked="BP_Checked"
+                        Unchecked="BP_UnChecked" />
+                </Grid>
+
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Notch Filter"
+                        Style="{StaticResource SettingNameTextBlock}" />
+                    <ToggleButton
+                        Name="Notch_FilterToggle"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource ToggleSwitchStyle}"
+                        Checked="Notch_Checked"
+                        Unchecked="Notch_UnChecked" />
+                </Grid>
+
+
+
+
+
+
+
+                <Border Style="{StaticResource SettingGroupTitle}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Environment &amp; Sampling Settings"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#964051"
+                        FontFamily="Segoe UI" />
+                </Border>
+
+
+
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 左边名称 -->
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="PLI Frequency"
+                        Style="{StaticResource SettingNameTextBlock}" />
+
+                    <!-- 右边下拉选择 -->
+                    <ComboBox
+                        Name="PLI_Combobox"
+                        Grid.Column="1"
+                        Width="80"
+                        Style="{StaticResource SettingComboBox}"
+                        SelectedIndex="0"
+                        SelectionChanged="PLI_SelectionChanged">
+                        <ComboBoxItem Content="50Hz" />
+                        <ComboBoxItem Content="60Hz" />
+                    </ComboBox>
+                </Grid>
+
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 左边名称 -->
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Leadoff Detection"
+                        Style="{StaticResource SettingNameTextBlock}" />
+
+                    <!-- 右边下拉选择 -->
+                    <ComboBox
+                        Name="Leadoff_Combobox"
+                        Grid.Column="1"
+                        Width="120"
+                        Style="{StaticResource SettingComboBox}"
+                        SelectedIndex="1"
+                        SelectionChanged="Leadoff_SelectionChanged">
+                        <ComboBoxItem Content="Hardware" />
+                        <ComboBoxItem Content="Hard&amp;Soft" />
+                    </ComboBox>
+                </Grid>
+
+
+                <!--<Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                -->
+                <!-- 左边名称 -->
+                <!--
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Serial Transfer Rate"
+                        Style="{StaticResource SettingNameTextBlock}" />
+
+                -->
+                <!-- 右边下拉选择 -->
+                <!--
+                    <ComboBox
+                        Grid.Column="1"
+                        Width="120"
+                        Style="{StaticResource SettingComboBox}"
+                                                SelectedIndex="0"
+                        SelectionChanged="PLI_SelectionChanged"
+                        >
+                        <ComboBoxItem Content="115200" />
+                        <ComboBoxItem Content="230400" />
+                        <ComboBoxItem Content="460800" />
+                        <ComboBoxItem Content="921600" />
+
+                    </ComboBox>
+                </Grid>-->
+                <Border Style="{StaticResource SettingGroupTitle}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Information"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#964051"
+                        FontFamily="Segoe UI" />
+                </Border>
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 左边名称 -->
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Software Version:"
+                        Style="{StaticResource SettingNameTextBlock}" />
+                    <TextBlock
+                        
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="2.3"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#964051"
+                        FontFamily="Segoe UI" />
+                </Grid>
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 左边名称 -->
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Firmware Version:"
+                        Style="{StaticResource SettingNameTextBlock}" />
+                    <TextBlock
+                       
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       x:Name="VersionTextBlock"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       Foreground="#964051"
+                       FontFamily="Segoe UI" />
+
+                </Grid>
+
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+
+
+</Window>

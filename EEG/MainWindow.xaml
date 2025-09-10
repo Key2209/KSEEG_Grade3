@@ -1,0 +1,189 @@
+﻿<Window
+    x:Class="EEG.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:EEG"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:vm="clr-namespace:EEG.ViewModel"
+    xmlns:oxy="http://oxyplot.org/wpf"
+
+    d:DataContext="{d:DesignInstance vm:MainViewModel, IsDesignTimeCreatable=False}"
+    Title="KSEEG_Fversion"
+    Width="1150"
+    Height="700"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Border Grid.Row="0" Background="#518FAE">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Button
+                        Width="100"
+                        Margin="20,0,1,0"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        Command="{Binding ScanCommand}">
+                        BLE
+                    </Button>
+                    <ComboBox
+                        Width="295"
+                        Margin="0"
+                        Style="{StaticResource RoundedComboBoxStyle}"
+                        ItemsSource="{Binding DeviceList_show}"
+                        DisplayMemberPath="DisplayInfo"
+                        SelectedItem="{Binding SelectedDevice_show, Mode=TwoWay}">
+
+                    </ComboBox>
+                    <Button
+                        Width="100"
+                        Margin="30,0,0,0"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        Command="{Binding ConnectCommand}">
+                        Connect
+                    </Button>
+                    <Button
+                        Width="100"
+                        Margin="5,0,0,0"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        Command="{Binding DisconnectCommand}"
+                        >
+                        Disconnet
+                    </Button>
+                    <Button
+                        Width="100"
+                        Margin="50,0,0,0"
+                        Style="{StaticResource SaveButtonStyle}"
+                        Background="{Binding SaveButtonBrush}"
+                        Content="{Binding SaveButtonContent}"
+                        Command="{Binding SaveCommand}"
+                        d:Content="Save"
+                        d:Background="#CECECE"
+                        >
+                        
+                    </Button>
+
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+                    <Image
+                        Width="40"
+                        Height="40"
+                        Margin="0,0,15,0"
+                        Source="{Binding HeadImageSource}"
+                        d:Source="/Picture/头部lead_of.png" >
+                    </Image>
+                    <Image
+                        Name="Ble_image"
+                        Width="35"
+                        Height="35"
+                        Margin="0,0,15,0"
+                        Source="{Binding BleImageSource}"
+                        d:Source="/Picture/关闭蓝牙_turn-off-bluetooth.png"
+                        
+                        />
+
+                    <Image
+                        Name="Battery_image"
+                        Width="40"
+                        Height="50"
+                        Margin="0,0,15,0"
+                        Source="{Binding BatteryImageSource}"
+                        d:Source="/Picture/电池-满电.png"
+                        >
+                        <!-- 鼠标悬停时显示电量 -->
+                        <Image.ToolTip>
+                            <TextBlock Text="{Binding BatteryLevel, StringFormat=Battery:{0:F0}%}" />
+                        </Image.ToolTip>
+                    </Image>
+                    <Image
+                        Name="Set_image"
+                        Width="35"
+                        Height="35"
+                        Margin="0,0,20,0"
+                        Source="/Picture/设置_setting-two.png"
+                       
+                        >
+                        <Image.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding OpenSettingsCommand}"></MouseBinding>
+                        </Image.InputBindings>
+                    </Image>
+
+
+
+                </StackPanel>
+
+
+
+            </Grid>
+
+        </Border>
+        <Border Grid.Row="1" Background="#DEEBF6">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Background="#DEEBF6">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="603*" />
+                            <ColumnDefinition Width="355*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            Background="#DEEBF6">
+
+                        </Border>
+                        <Border
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="2"
+                            Margin="0,509,0,0"
+                            Background="#E1E5E6" />
+
+
+                    </Grid>
+                </Border>
+                <Border Grid.Column="1" Background="#E1E5E6">
+
+                </Border>
+
+
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Background="#508DAC">
+
+        </Border>
+    </Grid>
+</Window>
