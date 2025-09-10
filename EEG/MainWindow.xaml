@@ -8,11 +8,11 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:vm="clr-namespace:EEG.ViewModel"
     xmlns:oxy="http://oxyplot.org/wpf"
-
-    d:DataContext="{d:DesignInstance vm:MainViewModel, IsDesignTimeCreatable=False}"
     Title="KSEEG_Fversion"
     Width="1150"
     Height="700"
+    d:DataContext="{d:DesignInstance vm:MainViewModel,
+                                     IsDesignTimeCreatable=False}"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -67,21 +67,19 @@
                         Width="100"
                         Margin="5,0,0,0"
                         Style="{StaticResource RoundedButtonStyle}"
-                        Command="{Binding DisconnectCommand}"
-                        >
+                        Command="{Binding DisconnectCommand}">
                         Disconnet
                     </Button>
                     <Button
                         Width="100"
                         Margin="50,0,0,0"
+                        d:Content="Save"
+                        d:Background="#CECECE"
                         Style="{StaticResource SaveButtonStyle}"
                         Background="{Binding SaveButtonBrush}"
                         Content="{Binding SaveButtonContent}"
-                        Command="{Binding SaveCommand}"
-                        d:Content="Save"
-                        d:Background="#CECECE"
-                        >
-                        
+                        Command="{Binding SaveCommand}">
+
                     </Button>
 
                 </StackPanel>
@@ -95,27 +93,24 @@
                         Width="40"
                         Height="40"
                         Margin="0,0,15,0"
-                        Source="{Binding HeadImageSource}"
-                        d:Source="/Picture/头部lead_of.png" >
+                        d:Source="/Picture/头部lead_of.png"
+                        Source="{Binding HeadImageSource}">
                     </Image>
                     <Image
                         Name="Ble_image"
                         Width="35"
                         Height="35"
                         Margin="0,0,15,0"
-                        Source="{Binding BleImageSource}"
                         d:Source="/Picture/关闭蓝牙_turn-off-bluetooth.png"
-                        
-                        />
+                        Source="{Binding BleImageSource}" />
 
                     <Image
                         Name="Battery_image"
                         Width="40"
                         Height="50"
                         Margin="0,0,15,0"
-                        Source="{Binding BatteryImageSource}"
                         d:Source="/Picture/电池-满电.png"
-                        >
+                        Source="{Binding BatteryImageSource}">
                         <!-- 鼠标悬停时显示电量 -->
                         <Image.ToolTip>
                             <TextBlock Text="{Binding BatteryLevel, StringFormat=Battery:{0:F0}%}" />
@@ -126,64 +121,217 @@
                         Width="35"
                         Height="35"
                         Margin="0,0,20,0"
-                        Source="/Picture/设置_setting-two.png"
-                       
-                        >
+                        Source="/Picture/设置_setting-two.png">
                         <Image.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" Command="{Binding OpenSettingsCommand}"></MouseBinding>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding OpenSettingsCommand}">
+                            </MouseBinding>
                         </Image.InputBindings>
                     </Image>
-
-
-
                 </StackPanel>
-
-
-
             </Grid>
-
         </Border>
+
+
+
         <Border Grid.Row="1" Background="#DEEBF6">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Background="#DEEBF6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Border
+                    x:Name="OXY"
+                    Grid.Row="0"
+                    Background="#DEEBF6">
+
+                    <ScrollViewer
+                        x:Name="ChartScroll"
+                        VerticalScrollBarVisibility="Hidden"
+                        HorizontalScrollBarVisibility="Disabled">
+                        <Grid x:Name="MainGrid" Height="1250">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="250" />
+                            </Grid.RowDefinitions>
+                            <oxy:PlotView
+                                Grid.Row="0"
+                                Model="{Binding RawDataPlotModel}"
+                                Controller="{Binding RawDataChart.plotController}"
+                                MouseDoubleClick="PlotView_MouseDoubleClick" />
+                            <oxy:PlotView
+                                Grid.Row="1"
+                                Model="{Binding BrainwavePlotModel}"
+                                Controller="{Binding BrainwaveChart.plotController}"
+                                MouseDoubleClick="PlotView_MouseDoubleClick" />
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <oxy:PlotView
+                                    Grid.Column="0"
+                                    Model="{Binding FocusPlotModel}"
+                                    Controller="{Binding FocusChart.plotController}"
+                                    MouseDoubleClick="PlotView_MouseDoubleClick" />
+                                <oxy:PlotView
+                                    Grid.Column="1"
+                                    Model="{Binding MeditationPlotModel}"
+                                    Controller="{Binding MeditationChart.plotController}"
+                                    MouseDoubleClick="PlotView_MouseDoubleClick" />
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <oxy:PlotView
+                                    Grid.Column="0"
+                                    Model="{Binding RelaxationPlotModel}"
+                                    Controller="{Binding RelaxationChart.plotController}"
+                                    MouseDoubleClick="PlotView_MouseDoubleClick" />
+                                <oxy:PlotView
+                                    Grid.Column="1"
+                                    Model="{Binding TiredPlotModel}"
+                                    Controller="{Binding TiredChart.plotController}"
+                                    MouseDoubleClick="PlotView_MouseDoubleClick" />
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <oxy:PlotView
+                                    Grid.Column="0"
+                                    Model="{Binding EmotionPlotModel}"
+                                    Controller="{Binding EmotionChart.plotController}"
+                                    MouseDoubleClick="PlotView_MouseDoubleClick" />
+                                <oxy:PlotView
+                                    Grid.Column="1"
+                                    Model="{Binding BlinkPlotModel}"
+                                    Controller="{Binding BlinkChart.plotController}"
+                                    MouseDoubleClick="PlotView_MouseDoubleClick" />
+                                <oxy:PlotView
+                                    Grid.Column="2"
+                                    Model="{Binding GnashPlotModel}"
+                                    Controller="{Binding GnashChart.plotController}"
+                                    MouseDoubleClick="PlotView_MouseDoubleClick" />
+
+                            </Grid>
+
+                        </Grid>
+                    </ScrollViewer>
+
+
+                </Border>
+
+                <Border Grid.Row="1" Background="#E1E5E6">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="603*" />
-                            <ColumnDefinition Width="355*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="4*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Border
                             Grid.Row="0"
-                            Grid.ColumnSpan="2"
-                            Background="#DEEBF6">
+                            Width="180"
+                            Margin="10"
+                            Padding="5"
+                            Background="#CECECE"
+                            CornerRadius="5">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="MAX30102"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="#964051"
+                                FontFamily="Segoe UI" />
+                        </Border>
+                        <Border
+                            Grid.Row="1"
+                            Width="180"
+                            Margin="10"
+                            Padding="5"
+                            Background="#CECECE"
+                            CornerRadius="5">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="MPU6050"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="#964051"
+                                FontFamily="Segoe UI" />
+                        </Border>
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,5,0,5"
+                            Padding="10"
+                            Background="#CECECE"
+                            CornerRadius="1">
+                            <TextBox
+                                Width="888"
+                                Padding="10"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Text="{Binding MAX30102_INF}"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                FontFamily="Segoe UI"
+                                Background="#CECECE"
+                                Foreground="#2B579A"
+                                BorderBrush="#CCCCCC"
+                                BorderThickness="1"
+                               
+                                IsReadOnly="True"
+                                TextAlignment="Center" />
 
                         </Border>
                         <Border
-                            Grid.RowSpan="2"
-                            Grid.ColumnSpan="2"
-                            Margin="0,509,0,0"
-                            Background="#E1E5E6" />
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="0,5,0,5"
+                            Padding="10"
+                            Background="#CECECE"
+                            CornerRadius="1">
+                            <TextBox
+                                Width="888"
+                                Padding="10"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Text="{Binding MPU6050_INF}"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                FontFamily="Segoe UI"
+                                Background="#CECECE"
+                                Foreground="#2B579A"
+                                BorderBrush="#CCCCCC"
+                                BorderThickness="1"
+                               
+                                IsReadOnly="True"
+                                TextAlignment="Center" />
 
-
+                        </Border>
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" Background="#E1E5E6">
-
-                </Border>
-
-
             </Grid>
         </Border>
-        <Border Grid.Row="2" Background="#508DAC">
 
+
+
+
+        <Border Grid.Row="2" Background="#508DAC">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Segoe UI" Foreground="#804051" Margin="0 0 5 0">Version:2.3</TextBlock>
         </Border>
     </Grid>
 </Window>
