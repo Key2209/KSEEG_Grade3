@@ -46,4 +46,3 @@ D:\CsProject\Grd3_EEGPJ\EEG\EEG\bin\Debug\Microsoft.Xaml.Behaviors.pdb
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\bin\Debug\Microsoft.Xaml.Behaviors.xml
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\Debug\View\SettingsWindow.g.cs
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\Debug\View\SettingsWindow.baml
-D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\Debug\EEG.exe.config
