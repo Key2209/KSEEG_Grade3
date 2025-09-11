@@ -80,7 +80,7 @@ namespace EEG.Tool
 
 
                 TitleFont = "Segoe UI",
-                TitleFontSize = 20,
+                TitleFontSize = 15,
                 TitleColor = OxyColor.Parse("#5B9BD5"),
                 Background = OxyColor.Parse("#DEEBF6")
             };
@@ -103,7 +103,7 @@ namespace EEG.Tool
             PlotModel.Axes.Add(new LinearAxis
             {
                 Position = AxisPosition.Bottom,
-                Title = "Samples",
+                //Title = "Samples",
                 TitleFont = "Segoe UI",
                 Minimum = 0,
                 Maximum = max_x,
@@ -126,7 +126,7 @@ namespace EEG.Tool
             PlotModel.Axes.Add(new LinearAxis
             {
                 Position = AxisPosition.Left,
-                Title = "Amplitude",
+                //Title = "Signal",
                 Minimum = 0,
                 Maximum = max_y,
                 MajorStep = Math.Max(1.0, max_y / 10.0),
@@ -146,19 +146,19 @@ namespace EEG.Tool
             // 图例（外置）
             PlotModel.Legends.Add(new Legend
             {
-                //LegendPosition = legendPosition,
-                //LegendPlacement = LegendPlacement.Outside,
+                LegendPosition = legendPosition,
+                LegendPlacement = LegendPlacement.Inside,
+                LegendOrientation = LegendOrientation.Horizontal,
+                LegendBorderThickness = 0,
+                LegendTextColor = OxyColor.Parse("#5B9BD5"),
+                LegendMargin=-5, // 减少边距
+                //LegendPlacement = LegendPlacement.Inside, // 放在绘图区内
+                //LegendPosition = LegendPosition.TopCenter,  // 相对于绘图区的左上角
                 //LegendOrientation = LegendOrientation.Horizontal,
+                //LegendMargin = -20,                          // 减少边距
+                //LegendPadding = 0,                         // 内边距
                 //LegendBorderThickness = 0,
                 //LegendTextColor = OxyColor.Parse("#5B9BD5")
-
-                LegendPlacement = LegendPlacement.Inside, // 放在绘图区内
-                LegendPosition = LegendPosition.TopCenter,  // 相对于绘图区的左上角
-                LegendOrientation = LegendOrientation.Horizontal,
-                LegendMargin = -20,                          // 减少边距
-                LegendPadding = 0,                         // 内边距
-                LegendBorderThickness = 0,
-                LegendTextColor = OxyColor.Parse("#5B9BD5")
             });
 
             // 添加曲线系列

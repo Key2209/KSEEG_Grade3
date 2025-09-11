@@ -273,7 +273,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
                 RaisePropertyChanged(() => BatteryImageSource);
             }
         }
-        private string _headImageSource = "/Picture/头部lead_of.png"; // 头部图片
+        private string _headImageSource = "/Picture/头部脱落2.png"; // 头部图片
         public string HeadImageSource
         {
             get { return _headImageSource; }
@@ -356,7 +356,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
                 _isLeadoff = value;
                 RaisePropertyChanged(() => IsLeadoff);
                 // 根据状态更新图片
-                HeadImageSource = _isLeadoff ? "/Picture/头部lead_of.png" : "/Picture/头部.png";
+                HeadImageSource = _isLeadoff ? "/Picture/头部未脱落2.png" : "/Picture/头部脱落2.png";
             }
         }
 
@@ -411,6 +411,8 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
                 // 连接成功，切换图片
                 BleImageSource = "/Picture/蓝牙_bluetooth.png";
                 ksEEG.ConnectState = true;
+                ksEEG.BleManager.setNotchFilterEnable(true);
+                ksEEG.BleManager.setFilterEnable(true);
             }
             else
             {
@@ -702,18 +704,18 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
 
 
             RawDataChart = new OxyChart(
-                title: "Raw Data",
+                title: "Raw Signal",
                 xSize: 2000, // X 轴窗口长度
-                ySize: 3, // Y 轴范围
+                ySize: 2, // Y 轴范围
                 lineCount: 2,
-                legendTitles: new[] { "Data1", "Data2" },
+                legendTitles: new[] { "CHL1(AF8)", "CHL2(AF7)" },
                 lineColors: new[] { OxyColors.Red, OxyColors.Green },
                 legendPosition: LegendPosition.TopLeft
             );
             RawDataPlotModel = RawDataChart.init();
 
             BrainwaveChart = new OxyChart(
-                title: "Brainwave Energy",
+                title: "Frequency Spectrum",
                 xSize: 200, // X 轴窗口长度
                 ySize: 100, // Y 轴范围
                 lineCount: 5,
@@ -724,7 +726,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
 
             BrainwavePlotModel = BrainwaveChart.init();
             FocusChart = new OxyChart(
-                title: "Focus Indicators",
+                title: "Focus Index",
                 xSize: 200, // X 轴窗口长度
                 ySize: 100, // Y 轴范围
                 lineCount: 1,
@@ -735,7 +737,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
 
             FocusPlotModel = FocusChart.init();
             MeditationChart = new OxyChart(
-                title: "Meditation",
+                title: "Meditation Index",
                 xSize: 100, // X 轴窗口长度
                 ySize: 100, // Y 轴范围
                 lineCount: 1,
@@ -745,28 +747,28 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
             );
             MeditationPlotModel = MeditationChart.init();
             RelaxationChart = new OxyChart(
-                title: "Relaxation",
+                title: "Relax Index",
                 xSize: 100, // X 轴窗口长度
                 ySize: 100, // Y 轴范围
                 lineCount: 1,
-                legendTitles: new[] { "Relaxation" },
+                legendTitles: new[] { "Relax" },
                 lineColors: new[] { OxyColors.Blue },
                 legendPosition: LegendPosition.TopLeft
             );
             RelaxationPlotModel = RelaxationChart.init();
 
             TiredChart = new OxyChart(
-                title: "Tiredness",
+                title: "Fatigue Index",
                 xSize: 100, // X 轴窗口长度
                 ySize: 100, // Y 轴范围
                 lineCount: 1,
-                legendTitles: new[] { "Tiredness" },
+                legendTitles: new[] { "Fatigue" },
                 lineColors: new[] { OxyColors.Purple },
                 legendPosition: LegendPosition.TopLeft
             );
             TiredPlotModel = TiredChart.init();
             EmotionChart = new OxyChart(
-                title: "Emotion",
+                title: "Emotion Index",
                 xSize: 100, // X 轴窗口长度
                 ySize: 2, // Y 轴范围
                 lineCount: 1,
@@ -779,7 +781,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
 
 
             BlinkChart = new OxyChart(
-                title: "Blink",
+                title: "Blink Signal",
                 xSize: 100, // X 轴窗口长度
                 ySize: 2, // Y 轴范围
                 lineCount: 1,
@@ -790,7 +792,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
             BlinkPlotModel = BlinkChart.init();
             BlinkPlotModel.Axes[1].Minimum = -1;
             GnashChart = new OxyChart(
-                title: "Gnash",
+                title: "Gnash Signal",
                 xSize: 100, // X 轴窗口长度
                 ySize: 2, // Y 轴范围
                 lineCount: 1,

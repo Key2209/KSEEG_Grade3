@@ -8,11 +8,12 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:vm="clr-namespace:EEG.ViewModel"
     xmlns:oxy="http://oxyplot.org/wpf"
-    Title="KSEEG_Fversion"
+    Title="Kingsense KSEEG Evaluation Software"
     Width="1150"
     Height="700"
     d:DataContext="{d:DesignInstance vm:MainViewModel,
                                      IsDesignTimeCreatable=False}"
+    Icon="/Picture/favicon.ico"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -89,13 +90,7 @@
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
 
-                    <Image
-                        Width="40"
-                        Height="40"
-                        Margin="0,0,15,0"
-                        d:Source="/Picture/头部lead_of.png"
-                        Source="{Binding HeadImageSource}">
-                    </Image>
+
                     <Image
                         Name="Ble_image"
                         Width="35"
@@ -103,6 +98,13 @@
                         Margin="0,0,15,0"
                         d:Source="/Picture/关闭蓝牙_turn-off-bluetooth.png"
                         Source="{Binding BleImageSource}" />
+                    <Image
+                        Width="40"
+                        Height="40"
+                        Margin="0,0,15,0"
+                        d:Source="/Picture/头部脱落2.png"
+                        Source="{Binding HeadImageSource}">
+                    </Image>
 
                     <Image
                         Name="Battery_image"
@@ -281,18 +283,17 @@
                             CornerRadius="1">
                             <TextBox
                                 Width="888"
-                                Padding="10"
+                                Padding="0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Text="{Binding MAX30102_INF}"
-                                FontSize="18"
+                                FontSize="16"
                                 FontWeight="Bold"
                                 FontFamily="Segoe UI"
                                 Background="#CECECE"
                                 Foreground="#2B579A"
                                 BorderBrush="#CCCCCC"
                                 BorderThickness="1"
-                               
                                 IsReadOnly="True"
                                 TextAlignment="Center" />
 
@@ -306,18 +307,17 @@
                             CornerRadius="1">
                             <TextBox
                                 Width="888"
-                                Padding="10"
+                                Padding="0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Text="{Binding MPU6050_INF}"
-                                FontSize="18"
+                                FontSize="16"
                                 FontWeight="Bold"
                                 FontFamily="Segoe UI"
                                 Background="#CECECE"
                                 Foreground="#2B579A"
                                 BorderBrush="#CCCCCC"
                                 BorderThickness="1"
-                               
                                 IsReadOnly="True"
                                 TextAlignment="Center" />
 
@@ -331,7 +331,43 @@
 
 
         <Border Grid.Row="2" Background="#508DAC">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Segoe UI" Foreground="#804051" Margin="0 0 5 0">Version:2.3</TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe UI"
+                    Foreground="#804051">
+                    www.ks-chip.com
+                </TextBlock>
+                <TextBlock
+                    Grid.Column="1"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe UI"
+                    Foreground="#804051">
+                    copyright@Kingsense
+                </TextBlock>
+                <TextBlock
+                    Grid.Column="2"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe UI"
+                    Foreground="#804051">
+                    Version:2.4
+                </TextBlock>
+            </Grid>
+
         </Border>
     </Grid>
 </Window>

@@ -5,10 +5,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:EEG.View"
-    Title="SettingsWindow"
+    Title="Setting"
     Width="350"
-    Height="550"
-    mc:Ignorable="d">
+    Height="500"
+    Icon="/Picture/setting.ico"
+    mc:Ignorable="d" Cursor="">
 
     <!--<Window.Resources>
 
@@ -153,9 +154,11 @@
 
         <!-- 美观下拉列表样式 -->
         <Style x:Key="SettingComboBox" TargetType="ComboBox">
-            <Setter Property="Foreground" Value="#964051" />
+            <Setter Property="Foreground" Value="#333333" />
+            <!--<Setter Property="Foreground" Value="#699DCE" />-->
+            
             <Setter Property="Background" Value="#D3D3D3" />
-            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Padding" Value="10,5" />
             <Setter Property="BorderThickness" Value="0" />
@@ -266,39 +269,14 @@
                     <TextBlock
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Text="Signal &amp; Filter Settings"
+                        Text="Signal Configuration"
                         FontSize="16"
                         FontWeight="Bold"
                         Foreground="#964051"
                         FontFamily="Segoe UI" />
                 </Border>
 
-                <Grid Style="{StaticResource SettingItemGrid}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
 
-                    <!-- 左边名称 -->
-                    <TextBlock
-                        Grid.Column="0"
-                        Text="Light Brightness"
-                        Style="{StaticResource SettingNameTextBlock}" />
-
-                    <!-- 右边下拉选择 -->
-                    <ComboBox
-                        Name="LightCombobox"
-                        Grid.Column="1"
-                        Width="90"
-                        Style="{StaticResource SettingComboBox}"
-                        SelectedIndex="3"
-                        SelectionChanged="Light_SelectionChanged">
-                        <ComboBoxItem Content="off" />
-                        <ComboBoxItem Content="min" />
-                        <ComboBoxItem Content="medium" />
-                        <ComboBoxItem Content="max" />
-                    </ComboBox>
-                </Grid>
                 <Grid Style="{StaticResource SettingItemGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -315,20 +293,43 @@
                     <ComboBox
                         Name="SignalCombobox"
                         Grid.Column="1"
-                        Width="90"
+                        Width="60"
                         Style="{StaticResource SettingComboBox}"
                         SelectedIndex="0"
-                        SelectionChanged="Signal_SelectionChanged">
+                        SelectionChanged="Signal_SelectionChanged" Cursor="Hand">
 
                         <ComboBoxItem Content="1080" />
                         <ComboBoxItem Content="1440" />
                         <ComboBoxItem Content="2040" />
                         <ComboBoxItem Content="2720" />
-                        <ComboBoxItem Content="off" />
+                        <ComboBoxItem Content="OFF" />
                     </ComboBox>
                 </Grid>
 
 
+
+
+
+
+
+
+
+
+                <Border Style="{StaticResource SettingGroupTitle}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Function Configuration"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#964051"
+                        FontFamily="Segoe UI" />
+                </Border>
+
+
+
+
+               
                 <Grid Style="{StaticResource SettingItemGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -343,6 +344,7 @@
                         Name="BP_FilterToggle"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
+                         IsChecked="True"  
                         Style="{StaticResource ToggleSwitchStyle}"
                         Checked="BP_Checked"
                         Unchecked="BP_UnChecked" />
@@ -363,28 +365,10 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         Style="{StaticResource ToggleSwitchStyle}"
+                         IsChecked="True"  
                         Checked="Notch_Checked"
                         Unchecked="Notch_UnChecked" />
                 </Grid>
-
-
-
-
-
-
-
-                <Border Style="{StaticResource SettingGroupTitle}">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Text="Environment &amp; Sampling Settings"
-                        FontSize="16"
-                        FontWeight="Bold"
-                        Foreground="#964051"
-                        FontFamily="Segoe UI" />
-                </Border>
-
-
 
                 <Grid Style="{StaticResource SettingItemGrid}">
                     <Grid.ColumnDefinitions>
@@ -402,7 +386,7 @@
                     <ComboBox
                         Name="PLI_Combobox"
                         Grid.Column="1"
-                        Width="80"
+                        Width="60"
                         Style="{StaticResource SettingComboBox}"
                         SelectedIndex="0"
                         SelectionChanged="PLI_SelectionChanged">
@@ -410,7 +394,7 @@
                         <ComboBoxItem Content="60Hz" />
                     </ComboBox>
                 </Grid>
-
+                
                 <Grid Style="{StaticResource SettingItemGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -420,23 +404,47 @@
                     <!-- 左边名称 -->
                     <TextBlock
                         Grid.Column="0"
-                        Text="Leadoff Detection"
+                        Text="Light Brightness"
                         Style="{StaticResource SettingNameTextBlock}" />
 
                     <!-- 右边下拉选择 -->
                     <ComboBox
-                        Name="Leadoff_Combobox"
+                        Name="LightCombobox"
                         Grid.Column="1"
-                        Width="120"
+                        Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        SelectedIndex="1"
-                        SelectionChanged="Leadoff_SelectionChanged">
-                        <ComboBoxItem Content="Hardware" />
-                        <ComboBoxItem Content="Hard&amp;Soft" />
+                        SelectedIndex="3"
+                        SelectionChanged="Light_SelectionChanged" Cursor="Hand">
+                        <ComboBoxItem Content="OFF" />
+                        <ComboBoxItem Content="Min" />
+                        <ComboBoxItem Content="Med" />
+                        <ComboBoxItem Content="Max" />
                     </ComboBox>
                 </Grid>
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
+                    <!-- 左边名称 -->
+                    <TextBlock
+         Grid.Column="0"
+         Text="Leadoff Detection"
+         Style="{StaticResource SettingNameTextBlock}" />
 
+                    <!-- 右边下拉选择 -->
+                    <ComboBox
+         Name="Leadoff_Combobox"
+         Grid.Column="1"
+         Width="90"
+         Style="{StaticResource SettingComboBox}"
+         SelectedIndex="1"
+         SelectionChanged="Leadoff_SelectionChanged" Cursor="Hand">
+                        <ComboBoxItem Content="Hardware" />
+                        <ComboBoxItem Content="Software" />
+                    </ComboBox>
+                </Grid>
                 <!--<Grid Style="{StaticResource SettingItemGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -472,7 +480,7 @@
                     <TextBlock
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Text="Information"
+                        Text="System Version"
                         FontSize="16"
                         FontWeight="Bold"
                         Foreground="#964051"
@@ -490,10 +498,9 @@
                         Text="Software Version:"
                         Style="{StaticResource SettingNameTextBlock}" />
                     <TextBlock
-                        
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Text="2.3"
+                        Text="2.4"
                         FontSize="16"
                         FontWeight="Bold"
                         Foreground="#964051"
@@ -511,14 +518,13 @@
                         Text="Firmware Version:"
                         Style="{StaticResource SettingNameTextBlock}" />
                     <TextBlock
-                       
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       x:Name="VersionTextBlock"
-                       FontSize="16"
-                       FontWeight="Bold"
-                       Foreground="#964051"
-                       FontFamily="Segoe UI" />
+                        x:Name="VersionTextBlock"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#964051"
+                        FontFamily="Segoe UI" />
 
                 </Grid>
 

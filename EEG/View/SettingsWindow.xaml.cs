@@ -62,6 +62,7 @@ namespace EEG.View
         private void Notch_Checked(object sender, RoutedEventArgs e)
         {
             ksEEG.BleManager.setNotchFilterEnable(true);
+
             //MessageBox.Show("已开启工频滤波器，建议佩戴设备后再开启");
         }
 
