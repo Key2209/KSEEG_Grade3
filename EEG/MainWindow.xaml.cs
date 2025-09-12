@@ -16,18 +16,21 @@ namespace EEG
     /// </summary>
     public partial class MainWindow : Window
     {
-        // 保存图表原始布局信息
-        private Dictionary<PlotView, (int Row, int Column, int RowSpan, int ColumnSpan)> _originalLayouts = new Dictionary<PlotView, (int, int, int, int)>();
-        // 当前放大的图表
-        private PlotView _expandedPlot = null;
+        public MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
             // 创建 ViewModel 实例
-            MainViewModel viewModel = new MainViewModel();
+            viewModel = new MainViewModel();
 
             // 绑定 DataContext，让窗口绑定到 ViewModel
             this.DataContext = viewModel;
+            this.Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            viewModel.OnWindowClosing();
         }
 
         private void PlotView_MouseDoubleClick(object sender, MouseButtonEventArgs e)

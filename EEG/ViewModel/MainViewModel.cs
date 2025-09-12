@@ -112,6 +112,9 @@ namespace EEG.ViewModel
 
                     BatteryLevel = (float)json["power"];
                     IsLeadoff = (bool)json["lead"];
+
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
+
                     JArray channel_1 = (JArray)json["channel_1"];
                     JArray channel_2 = (JArray)json["channel_2"];
                     Debug.WriteLine("原始数据： " + channel_1.ToString() + "-----" + channel_2.ToString());
@@ -125,6 +128,7 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     double delta = (double)json["delta"];
                     double theta = (double)json["theta"];
                     double alpha = (double)json["alpha"];
@@ -140,6 +144,7 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     double emotion = (double)json["emotion"];
                     EmotionChart.addPointNum(emotion);
                     Debug.WriteLine("收到情绪数据: " + json.ToString());
@@ -150,6 +155,8 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
+
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     // 处理特征数据
                     double stress = (double)json["tired"];
                     double relax = (double)json["relax"];
@@ -168,6 +175,7 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     JArray red = (JArray)json["red"];
                     JArray ired = (JArray)json["ired"];
                     JArray spo2 = (JArray)json["spo2"];
@@ -182,6 +190,7 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     MPU6050_INF = $"加速度: X={(double)data["accX"].First:F2}, Y={(double)data["accY"].First:F2}," +
 $" Z={(double)data["accZ"].First:F2}  陀螺仪: X={(double)data["gyroX"].First:F2}," +
 $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
@@ -193,6 +202,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
             {
                 RunOnUI(() =>
                 {
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     JArray blink = (JArray)json["blink"];
                     BlinkChart.addPointArray(blink);
                     Debug.WriteLine("收到眨眼数据: " + json.ToString());
@@ -203,6 +213,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
             {
                 RunOnUI(() =>
                 {
+                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     JArray gnash = (JArray)json["gnash"];
                     GnashChart.addPointArray(gnash);
                     Debug.WriteLine("收到咬牙数据: " + json.ToString());
@@ -406,6 +417,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
 
             if (SelectedDevice_show != null)
             {
+                ksEEG.BleManager.scanStop();
                 KsEEG.BleManager.connectDevice(SelectedDevice_show.BleDevice);
 
                 // 连接成功，切换图片
@@ -413,6 +425,9 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
                 ksEEG.ConnectState = true;
                 ksEEG.BleManager.setNotchFilterEnable(true);
                 ksEEG.BleManager.setFilterEnable(true);
+                ksEEG.BleManager.setLight(0);
+                ksEEG.BleManager.setMagnify(3);
+
             }
             else
             {
@@ -433,7 +448,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
                 BleImageSource = "/Picture/关闭蓝牙_turn-off-bluetooth.png";
                 // 断开连接
                 KsEEG.BleManager.disconnectDevice();
-
+                
                 // 从列表移除
                 ksEEG.DeviceList.Remove(SelectedDevice_show);
                 DeviceList_show.Remove(SelectedDevice_show);
@@ -805,5 +820,16 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
         }
 
         #endregion
+
+        public void OnWindowClosing()
+        {
+            // ✅ 在这里编写你的关闭前需要做的所有逻辑
+            // 比如：断开蓝牙、停止线程、保存数据、释放资源等
+
+                ksEEG.BleManager.disconnectDevice();
+                Debug.WriteLine("窗口关闭，已断开蓝牙连接");
+            // 🎯 注意：这里是你业务逻辑的关键，可以自由扩展
+        }
+
     }
 }

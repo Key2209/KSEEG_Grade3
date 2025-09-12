@@ -413,7 +413,7 @@
                         Grid.Column="1"
                         Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        SelectedIndex="3"
+                        SelectedIndex="2"
                         SelectionChanged="Light_SelectionChanged" Cursor="Hand">
                         <ComboBoxItem Content="OFF" />
                         <ComboBoxItem Content="Min" />
