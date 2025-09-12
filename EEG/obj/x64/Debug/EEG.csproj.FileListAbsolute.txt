@@ -48,3 +48,8 @@ D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\x64\Debug\EEG.csproj.CoreCompileInputs.cache
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\x64\Debug\EEG.csproj.Up2Date
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\x64\Debug\EEG.exe
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\x64\Debug\EEG.pdb
+D:\CsProject\Grd3_EEGPJ\EEG\EEG\bin\x64\Debug\EEG.exe.manifest
+D:\CsProject\Grd3_EEGPJ\EEG\EEG\bin\x64\Debug\EEG.application
+D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\x64\Debug\EEG.exe.config
+D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\x64\Debug\EEG.exe.manifest
+D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\x64\Debug\EEG.application

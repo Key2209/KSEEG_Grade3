@@ -450,7 +450,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
             if (ksEEG.ConnectState == true)
             {
 
-                ksEEG.BleManager.store();
+                
                 IsSaveButtonChecked = !IsSaveButtonChecked;
                 if (IsSaveButtonChecked == true)
                 {
