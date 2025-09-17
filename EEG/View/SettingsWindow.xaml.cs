@@ -174,24 +174,24 @@ namespace EEG.View
             Debug.WriteLine($"已设置信号增益为{SignalCombobox.SelectedIndex + 3}");
         }
 
-        //private void MAX30102_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    max30102=true;
-        //} 
+        private void MAX30102_Checked(object sender, RoutedEventArgs e)
+        {
+            max30102 = true;
+        }
 
-        //private void MAX30102_UnChecked(object sender, RoutedEventArgs e)
-        //{
-        //    max30102=false;
-        //}
+        private void MAX30102_UnChecked(object sender, RoutedEventArgs e)
+        {
+            max30102 = false;
+        }
 
-        //private void MPU6050_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    mpu6050=true;
-        //}
+        private void MPU6050_Checked(object sender, RoutedEventArgs e)
+        {
+            mpu6050 = true;
+        }
 
-        //private void MPU6050_UnChecked(object sender, RoutedEventArgs e)
-        //{
-        //    mpu6050=false;
-        //}
+        private void MPU6050_UnChecked(object sender, RoutedEventArgs e)
+        {
+            mpu6050 = false;
+        }
     }
 }

@@ -143,12 +143,12 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Border
+                <!--<Border
                     x:Name="OXY"
                     Grid.Row="0"
-                    Background="#DEEBF6">
+                    Background="#DEEBF6">-->
 
-                    <ScrollViewer
+                    <!--<ScrollViewer
                         x:Name="ChartScroll"
                         VerticalScrollBarVisibility="Hidden"
                         HorizontalScrollBarVisibility="Disabled">
@@ -227,10 +227,101 @@
                             </Grid>
 
                         </Grid>
-                    </ScrollViewer>
+                    </ScrollViewer>-->
 
 
+                 
+                <!--</Border>-->
+
+
+
+
+
+
+
+                <Border x:Name="ChartBorder" BorderBrush="Gray" BorderThickness="1">
+                    <Grid x:Name="RootGrid">
+                        <!-- Scrollable 原始网格 -->
+                        <ScrollViewer x:Name="ChartScroll"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Disabled">
+                            <Grid x:Name="MainGrid" Height="1250">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="250" />
+                                    <RowDefinition Height="250" />
+                                    <RowDefinition Height="250" />
+                                    <RowDefinition Height="250" />
+                                    <RowDefinition Height="250" />
+                                </Grid.RowDefinitions>
+
+                                <!-- 这里放你的 PlotView（保持原来的布局） -->
+                                <!-- Row 0 -->
+                                <oxy:PlotView Grid.Row="0" Model="{Binding RawDataPlotModel}"
+                              Controller="{Binding RawDataChart.plotController}"
+                              MouseDoubleClick="PlotView_MouseDoubleClick" Tag="RawData" />
+                                <!-- Row 1 -->
+                                <oxy:PlotView Grid.Row="1" Model="{Binding BrainwavePlotModel}"
+                              Controller="{Binding BrainwaveChart.plotController}"
+                              MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Brainwave" />
+                                <!-- Row 2 -->
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <oxy:PlotView Grid.Column="0" Model="{Binding FocusPlotModel}"
+                                  Controller="{Binding FocusChart.plotController}"
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Focus" />
+                                    <oxy:PlotView Grid.Column="1" Model="{Binding MeditationPlotModel}"
+                                  Controller="{Binding MeditationChart.plotController}"
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Meditation" />
+                                </Grid>
+                                <!-- Row 3 -->
+                                <Grid Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <oxy:PlotView Grid.Column="0" Model="{Binding RelaxationPlotModel}"
+                                  Controller="{Binding RelaxationChart.plotController}"
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Relaxation" />
+                                    <oxy:PlotView Grid.Column="1" Model="{Binding TiredPlotModel}"
+                                  Controller="{Binding TiredChart.plotController}"
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Tired" />
+                                </Grid>
+                                <!-- Row 4 -->
+                                <Grid Grid.Row="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <oxy:PlotView Grid.Column="0" Model="{Binding EmotionPlotModel}"
+                                  Controller="{Binding EmotionChart.plotController}"
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Emotion" />
+                                    <oxy:PlotView Grid.Column="1" Model="{Binding BlinkPlotModel}"
+                                  Controller="{Binding BlinkChart.plotController}"
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Blink" />
+                                    <oxy:PlotView Grid.Column="2" Model="{Binding GnashPlotModel}"
+                                  Controller="{Binding GnashChart.plotController}"
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Gnash" />
+                                </Grid>
+                            </Grid>
+                        </ScrollViewer>
+
+                        <!-- Overlay Grid 放在 RootGrid 最上层，用于放大 PlotView -->
+                        <Grid x:Name="OverlayGrid" Background="#80000000" Visibility="Collapsed"/>
+                    </Grid>
                 </Border>
+
+
+
+
+
+
+
+
+
 
                 <Border Grid.Row="1" Background="#E1E5E6">
                     <Grid>
@@ -308,15 +399,22 @@
                             CornerRadius="1">
 
                             <Grid Visibility="{Binding MAX30102_show}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
                                 <!-- 加速度 X -->
-                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0">
+                                <StackPanel
+                                    Grid.Column="0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Red："
                                         FontSize="15"
@@ -334,9 +432,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 加速度 Y -->
                                 <StackPanel
+                                    Grid.Column="1"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="1">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Ired："
                                         FontSize="15"
@@ -354,9 +453,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 加速度 Z -->
                                 <StackPanel
+                                    Grid.Column="2"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="2">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Spo2："
                                         FontSize="15"
@@ -374,9 +474,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 角速度 X -->
                                 <StackPanel
+                                    Grid.Column="3"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="3">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Hr："
                                         FontSize="15"
@@ -406,18 +507,28 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
                             CornerRadius="1">
                             <Grid Visibility="{Binding MPU6050_show}">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition>
+                                    </ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                            
+
 
 
                                 <!-- 加速度 X -->
-                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 0" Grid.Column="0">
+                                <StackPanel
+                                    Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Acc X："
                                         FontSize="15"
@@ -435,9 +546,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 加速度 Y -->
                                 <StackPanel
+                                    Grid.Column="1"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="1">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Acc Y："
                                         FontSize="15"
@@ -455,9 +567,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 加速度 Z -->
                                 <StackPanel
+                                    Grid.Column="2"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="2">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Acc Z："
                                         FontSize="15"
@@ -475,9 +588,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 角速度 X -->
                                 <StackPanel
+                                    Grid.Column="3"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="3">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Groy X："
                                         FontSize="15"
@@ -495,9 +609,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 角速度 Y -->
                                 <StackPanel
+                                    Grid.Column="4"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="4">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Groy Y："
                                         FontSize="15"
@@ -515,9 +630,10 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
 
                                 <!-- 角速度 Z -->
                                 <StackPanel
+                                    Grid.Column="5"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Center"
-                                    Orientation="Horizontal" Grid.Column="5">
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Text="Groy Z："
                                         FontSize="15"
