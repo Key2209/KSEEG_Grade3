@@ -61,6 +61,7 @@ namespace EEG.ViewModel
                 RunOnUI(() =>
                 {
                     KsEEG.ConnectState = false;
+                    BleImageSource = "/Picture/关闭蓝牙_turn-off-bluetooth.png";
                     Debug.WriteLine("已断开连接");
                 });
             };

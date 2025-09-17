@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\Debug\
+D:\CsProject\grd3_EEGPJ\EEG\EEG\obj\Debug\
 EEG
 none
 false
 DEBUG;TRACE
-D:\CsProject\Grd3_EEGPJ\EEG\EEG\App.xaml
+D:\CsProject\grd3_EEGPJ\EEG\EEG\App.xaml
 2-500529991
 
 11-1832070883
-136976676079
+136540083631
 MainWindow.xaml;View\SettingsWindow.xaml;
 
 False

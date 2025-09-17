@@ -9,7 +9,7 @@
     Width="350"
     Height="500"
     Icon="/Picture/setting.ico"
-    mc:Ignorable="d" Cursor="">
+    mc:Ignorable="d" Cursor="" WindowStartupLocation="CenterScreen">
 
     <!--<Window.Resources>
 
@@ -437,12 +437,12 @@
                     <ComboBox
          Name="Leadoff_Combobox"
          Grid.Column="1"
-         Width="90"
+         Width="120"
          Style="{StaticResource SettingComboBox}"
          SelectedIndex="1"
          SelectionChanged="Leadoff_SelectionChanged" Cursor="Hand">
-                        <ComboBoxItem Content="Hardware" />
-                        <ComboBoxItem Content="Software" />
+                        <ComboBoxItem Content="Hardware Mode" />
+                        <ComboBoxItem Content="Software Mode" />
                     </ComboBox>
                 </Grid>
                 <!--<Grid Style="{StaticResource SettingItemGrid}">
@@ -500,7 +500,7 @@
                     <TextBlock
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Text="2.4"
+                        Text="2.3"
                         FontSize="16"
                         FontWeight="Bold"
                         Foreground="#964051"

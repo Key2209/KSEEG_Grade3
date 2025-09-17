@@ -14,7 +14,9 @@
     d:DataContext="{d:DesignInstance vm:MainViewModel,
                                      IsDesignTimeCreatable=False}"
     Icon="/Picture/favicon.ico"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen"
+    >
 
     <Window.Resources>
         <ResourceDictionary>
@@ -364,7 +366,7 @@
                     VerticalAlignment="Center"
                     FontFamily="Segoe UI"
                     Foreground="#804051">
-                    Version:2.4
+                    Version:2.3
                 </TextBlock>
             </Grid>
 
