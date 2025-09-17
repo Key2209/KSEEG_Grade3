@@ -26,12 +26,17 @@ namespace EEG.View
 
         public KsEEG ksEEG { get; }
         public string FirmwareVersion { get; set; }
-        public SettingsWindow(KsEEG ksEEG)
+        public bool mpu6050 { get; set; }
+        public bool max30102 { get; set; }
+        public SettingsWindow(MainViewModel vm,KsEEG ksEEG)
         {
             this.ksEEG = ksEEG;
-
+            //this.mpu6050 = mpu6050;
+            //this.max30102=max30102;
             InitializeComponent();
-
+            this.DataContext = vm;
+            //MAX30102_Toggle.IsChecked=this.max30102;
+            //MPU6050_Toggle.IsChecked=this.mpu6050;
 
             BP_FilterToggle.IsChecked = ksEEG.IsFilterEnable;
             Notch_FilterToggle.IsChecked = ksEEG.IsNotchFilterEnable;
@@ -168,5 +173,25 @@ namespace EEG.View
             ksEEG.MagnifyValue=SignalCombobox.SelectedIndex;
             Debug.WriteLine($"已设置信号增益为{SignalCombobox.SelectedIndex + 3}");
         }
+
+        //private void MAX30102_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    max30102=true;
+        //} 
+
+        //private void MAX30102_UnChecked(object sender, RoutedEventArgs e)
+        //{
+        //    max30102=false;
+        //}
+
+        //private void MPU6050_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    mpu6050=true;
+        //}
+
+        //private void MPU6050_UnChecked(object sender, RoutedEventArgs e)
+        //{
+        //    mpu6050=false;
+        //}
     }
 }

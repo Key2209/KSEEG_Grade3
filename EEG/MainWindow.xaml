@@ -307,7 +307,7 @@
                             Background="#CECECE"
                             CornerRadius="1">
 
-                                <Grid>
+                            <Grid Visibility="{Binding MAX30102_show}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
@@ -404,7 +404,7 @@ FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
                             Padding="10"
                             Background="#CECECE"
                             CornerRadius="1">
-                            <Grid>
+                            <Grid Visibility="{Binding MPU6050_show}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>

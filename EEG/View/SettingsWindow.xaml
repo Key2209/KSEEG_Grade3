@@ -7,9 +7,11 @@
     xmlns:local="clr-namespace:EEG.View"
     Title="Setting"
     Width="350"
-    Height="500"
+    Height="600"
     Icon="/Picture/setting.ico"
-    mc:Ignorable="d" Cursor="" WindowStartupLocation="CenterScreen">
+    Cursor=""
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
     <!--<Window.Resources>
 
@@ -156,7 +158,7 @@
         <Style x:Key="SettingComboBox" TargetType="ComboBox">
             <Setter Property="Foreground" Value="#333333" />
             <!--<Setter Property="Foreground" Value="#699DCE" />-->
-            
+
             <Setter Property="Background" Value="#D3D3D3" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="SemiBold" />
@@ -295,8 +297,8 @@
                         Grid.Column="1"
                         Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        
-                        SelectionChanged="Signal_SelectionChanged" Cursor="Hand">
+                        SelectionChanged="Signal_SelectionChanged"
+                        Cursor="Hand">
 
                         <ComboBoxItem Content="1080" />
                         <ComboBoxItem Content="1440" />
@@ -305,15 +307,6 @@
                         <ComboBoxItem Content="OFF" />
                     </ComboBox>
                 </Grid>
-
-
-
-
-
-
-
-
-
 
                 <Border Style="{StaticResource SettingGroupTitle}">
                     <TextBlock
@@ -329,7 +322,7 @@
 
 
 
-               
+
                 <Grid Style="{StaticResource SettingItemGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -344,7 +337,6 @@
                         Name="BP_FilterToggle"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
-                         
                         Style="{StaticResource ToggleSwitchStyle}"
                         Checked="BP_Checked"
                         Unchecked="BP_UnChecked" />
@@ -365,7 +357,6 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         Style="{StaticResource ToggleSwitchStyle}"
-                         
                         Checked="Notch_Checked"
                         Unchecked="Notch_UnChecked" />
                 </Grid>
@@ -388,13 +379,12 @@
                         Grid.Column="1"
                         Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        
                         SelectionChanged="PLI_SelectionChanged">
                         <ComboBoxItem Content="50Hz" />
                         <ComboBoxItem Content="60Hz" />
                     </ComboBox>
                 </Grid>
-                
+
                 <Grid Style="{StaticResource SettingItemGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -413,8 +403,8 @@
                         Grid.Column="1"
                         Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        
-                        SelectionChanged="Light_SelectionChanged" Cursor="Hand">
+                        SelectionChanged="Light_SelectionChanged"
+                        Cursor="Hand">
                         <ComboBoxItem Content="OFF" />
                         <ComboBoxItem Content="Min" />
                         <ComboBoxItem Content="Med" />
@@ -429,18 +419,18 @@
 
                     <!-- 左边名称 -->
                     <TextBlock
-         Grid.Column="0"
-         Text="Leadoff Detection"
-         Style="{StaticResource SettingNameTextBlock}" />
+                        Grid.Column="0"
+                        Text="Leadoff Detection"
+                        Style="{StaticResource SettingNameTextBlock}" />
 
                     <!-- 右边下拉选择 -->
                     <ComboBox
-         Name="Leadoff_Combobox"
-         Grid.Column="1"
-         Width="130"
-         Style="{StaticResource SettingComboBox}"
-         
-         SelectionChanged="Leadoff_SelectionChanged" Cursor="Hand">
+                        Name="Leadoff_Combobox"
+                        Grid.Column="1"
+                        Width="130"
+                        Style="{StaticResource SettingComboBox}"
+                        SelectionChanged="Leadoff_SelectionChanged"
+                        Cursor="Hand">
                         <ComboBoxItem Content="Hardware Mode" />
                         <ComboBoxItem Content="Software Mode" />
                     </ComboBox>
@@ -476,6 +466,58 @@
 
                     </ComboBox>
                 </Grid>-->
+                <Border Style="{StaticResource SettingGroupTitle}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Sensor Configuration"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#964051"
+                        FontFamily="Segoe UI" />
+                </Border>
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="MAX30102"
+                        Style="{StaticResource SettingNameTextBlock}" />
+                    <ToggleButton
+                        Name="MAX30102_Toggle"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        IsChecked="{Binding IsMax30102Visible, Mode=TwoWay}"
+                        Style="{StaticResource ToggleSwitchStyle}"
+                        Checked="MAX30102_Checked"
+                        Unchecked="MAX30102_UnChecked" />
+                </Grid>
+                <Grid Style="{StaticResource SettingItemGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="MPU6050"
+                        Style="{StaticResource SettingNameTextBlock}" />
+                    <ToggleButton
+                        Name="MPU6050_Toggle"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        IsChecked="{Binding IsMPU6050Visible, Mode=TwoWay}"
+                        Style="{StaticResource ToggleSwitchStyle}"
+                        Checked="MPU6050_Checked"
+                        Unchecked="MPU6050_UnChecked" />
+                </Grid>
+
+
+
+
                 <Border Style="{StaticResource SettingGroupTitle}">
                     <TextBlock
                         HorizontalAlignment="Center"

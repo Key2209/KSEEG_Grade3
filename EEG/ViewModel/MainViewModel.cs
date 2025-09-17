@@ -697,7 +697,7 @@ namespace EEG.ViewModel
             //MessageBoxButton.OK, MessageBoxImage.Warning);
             //return;
             //}
-            SettingsWindow settingsWindow = new SettingsWindow(ksEEG);
+            SettingsWindow settingsWindow = new SettingsWindow( this,ksEEG);
             settingsWindow.ShowDialog();
         }
 
@@ -1016,5 +1016,63 @@ namespace EEG.ViewModel
             // 🎯 注意：这里是你业务逻辑的关键，可以自由扩展
         }
 
+
+
+        #region
+        private Visibility _max30102Show = Visibility.Collapsed;
+        public Visibility MAX30102_show
+        {
+            get => _max30102Show;
+            set
+            {
+                _max30102Show = value;
+                RaisePropertyChanged(nameof(MAX30102_show));
+            }
+        }
+        private bool _isMax30102Visible=false;
+        public bool IsMax30102Visible
+        {
+            get => _isMax30102Visible;
+            set
+            {
+                if (_isMax30102Visible != value)
+                {
+                    _isMax30102Visible = value;
+                    RaisePropertyChanged(nameof(IsMax30102Visible));
+
+                    // 同步更新 Visibility
+                    MAX30102_show = value ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
+        }
+
+
+        private Visibility _MPU6050Show = Visibility.Collapsed;
+        public Visibility MPU6050_show
+        {
+            get => _MPU6050Show;
+            set
+            {
+                _MPU6050Show = value;
+                RaisePropertyChanged(nameof(MPU6050_show));
+            }
+        }
+        private bool _isMPU6050Visible=false;
+        public bool IsMPU6050Visible
+        {
+            get => _isMPU6050Visible;
+            set
+            {
+                if (_isMPU6050Visible != value)
+                {
+                    _isMPU6050Visible = value;
+                    RaisePropertyChanged(nameof(IsMPU6050Visible));
+
+                    // 同步更新 Visibility
+                    MPU6050_show = value ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
+        }
+        #endregion
     }
 }
