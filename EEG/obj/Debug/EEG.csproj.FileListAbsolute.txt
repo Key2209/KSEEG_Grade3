@@ -50,3 +50,4 @@ D:\CsProject\Grd3_EEGPJ\EEG\EEG\bin\Debug\EEG.exe.manifest
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\bin\Debug\EEG.application
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\Debug\EEG.exe.manifest
 D:\CsProject\Grd3_EEGPJ\EEG\EEG\obj\Debug\EEG.application
+D:\CsProject\grd3_EEGPJ\EEG\EEG\obj\Debug\EEG.exe.config

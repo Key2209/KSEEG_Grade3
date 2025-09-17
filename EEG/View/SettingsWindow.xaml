@@ -295,7 +295,7 @@
                         Grid.Column="1"
                         Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        SelectedIndex="0"
+                        
                         SelectionChanged="Signal_SelectionChanged" Cursor="Hand">
 
                         <ComboBoxItem Content="1080" />
@@ -344,7 +344,7 @@
                         Name="BP_FilterToggle"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
-                         IsChecked="True"  
+                         
                         Style="{StaticResource ToggleSwitchStyle}"
                         Checked="BP_Checked"
                         Unchecked="BP_UnChecked" />
@@ -365,7 +365,7 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         Style="{StaticResource ToggleSwitchStyle}"
-                         IsChecked="True"  
+                         
                         Checked="Notch_Checked"
                         Unchecked="Notch_UnChecked" />
                 </Grid>
@@ -388,7 +388,7 @@
                         Grid.Column="1"
                         Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        SelectedIndex="0"
+                        
                         SelectionChanged="PLI_SelectionChanged">
                         <ComboBoxItem Content="50Hz" />
                         <ComboBoxItem Content="60Hz" />
@@ -413,7 +413,7 @@
                         Grid.Column="1"
                         Width="60"
                         Style="{StaticResource SettingComboBox}"
-                        SelectedIndex="2"
+                        
                         SelectionChanged="Light_SelectionChanged" Cursor="Hand">
                         <ComboBoxItem Content="OFF" />
                         <ComboBoxItem Content="Min" />
@@ -437,9 +437,9 @@
                     <ComboBox
          Name="Leadoff_Combobox"
          Grid.Column="1"
-         Width="120"
+         Width="130"
          Style="{StaticResource SettingComboBox}"
-         SelectedIndex="1"
+         
          SelectionChanged="Leadoff_SelectionChanged" Cursor="Hand">
                         <ComboBoxItem Content="Hardware Mode" />
                         <ComboBoxItem Content="Software Mode" />

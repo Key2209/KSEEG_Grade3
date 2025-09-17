@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|d:\\csproject\\grd3_eegpj\\eeg\\eeg\\tool\\kseeg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\tool\\kseeg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -15,26 +15,23 @@
       "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\viewmodel\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\viewmodel\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|EEG||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\tool\\kseeg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\tool\\kseeg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\view\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\view\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\viewmodel\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\viewmodel\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|D:\\CsProject\\Grd3_EEGPJ\\EEG\\eeg\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|solutionrelative:eeg\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{014CE1A4-2A4B-40F9-A9AF-7F500FE28EE8}|EEG\\EEG.csproj|d:\\csproject\\grd3_eegpj\\eeg\\eeg\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|EEG||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -44,50 +41,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "EEG",
-              "DocumentMoniker": "D:\\CsProject\\grd3_EEGPJ\\EEG\\EEG\\EEG.csproj",
+              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\EEG.csproj",
               "RelativeDocumentMoniker": "EEG\\EEG.csproj",
-              "ToolTip": "D:\\CsProject\\grd3_EEGPJ\\EEG\\EEG\\EEG.csproj",
+              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\EEG.csproj",
               "RelativeToolTip": "EEG\\EEG.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-09-13T11:19:31.979Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SettingsViewModel.cs",
-              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\SettingsViewModel.cs",
-              "RelativeDocumentMoniker": "EEG\\ViewModel\\SettingsViewModel.cs",
-              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\SettingsViewModel.cs",
-              "RelativeToolTip": "EEG\\ViewModel\\SettingsViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAtAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "SettingsWindow.xaml.cs",
+              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\View\\SettingsWindow.xaml.cs",
+              "RelativeDocumentMoniker": "EEG\\View\\SettingsWindow.xaml.cs",
+              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\View\\SettingsWindow.xaml.cs",
+              "RelativeToolTip": "EEG\\View\\SettingsWindow.xaml.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAswFYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T13:36:06.076Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "EEG\\ViewModel\\MainViewModel.cs",
-              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\MainViewModel.cs",
-              "RelativeToolTip": "EEG\\ViewModel\\MainViewModel.cs",
-              "ViewState": "AgIAAFEBAAAAAAAAAAAAALgBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T12:56:46.731Z",
+              "WhenOpened": "2025-09-12T12:57:16.887Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "KsEEG.cs",
+              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\Tool\\KsEEG.cs",
+              "RelativeDocumentMoniker": "EEG\\Tool\\KsEEG.cs",
+              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\Tool\\KsEEG.cs",
+              "RelativeToolTip": "EEG\\Tool\\KsEEG.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAADwv18AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T12:57:12.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "SettingsWindow.xaml",
               "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\View\\SettingsWindow.xaml",
               "RelativeDocumentMoniker": "EEG\\View\\SettingsWindow.xaml",
@@ -99,7 +95,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "EEG\\ViewModel\\MainViewModel.cs",
+              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\MainViewModel.cs",
+              "RelativeToolTip": "EEG\\ViewModel\\MainViewModel.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAAAEAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T12:56:46.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SettingsViewModel.cs",
+              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\SettingsViewModel.cs",
+              "RelativeDocumentMoniker": "EEG\\ViewModel\\SettingsViewModel.cs",
+              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\ViewModel\\SettingsViewModel.cs",
+              "RelativeToolTip": "EEG\\ViewModel\\SettingsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T13:36:06.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "EEG\\MainWindow.xaml.cs",
@@ -108,32 +130,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-12T13:23:08.429Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SettingsWindow.xaml.cs",
-              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\View\\SettingsWindow.xaml.cs",
-              "RelativeDocumentMoniker": "EEG\\View\\SettingsWindow.xaml.cs",
-              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\View\\SettingsWindow.xaml.cs",
-              "RelativeToolTip": "EEG\\View\\SettingsWindow.xaml.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAnwBwAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T12:57:16.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "KsEEG.cs",
-              "DocumentMoniker": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\Tool\\KsEEG.cs",
-              "RelativeDocumentMoniker": "EEG\\Tool\\KsEEG.cs",
-              "ToolTip": "D:\\CsProject\\Grd3_EEGPJ\\EEG\\EEG\\Tool\\KsEEG.cs",
-              "RelativeToolTip": "EEG\\Tool\\KsEEG.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAlwHYAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T12:57:12.872Z",
               "EditorCaption": ""
             },
             {

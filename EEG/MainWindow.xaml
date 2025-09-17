@@ -14,9 +14,8 @@
     d:DataContext="{d:DesignInstance vm:MainViewModel,
                                      IsDesignTimeCreatable=False}"
     Icon="/Picture/favicon.ico"
-    mc:Ignorable="d"
     WindowStartupLocation="CenterScreen"
-    >
+    mc:Ignorable="d">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -276,7 +275,7 @@
                                 Foreground="#964051"
                                 FontFamily="Segoe UI" />
                         </Border>
-                        <Border
+                        <!--<Border
                             Grid.Row="0"
                             Grid.Column="1"
                             Margin="0,5,0,5"
@@ -299,8 +298,246 @@
                                 IsReadOnly="True"
                                 TextAlignment="Center" />
 
+                        </Border>-->
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,5,0,5"
+                            Padding="10"
+                            Background="#CECECE"
+                            CornerRadius="1">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                
+                                <!-- 加速度 X -->
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0">
+                                    <TextBlock
+                                        Text="Red："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding RedText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#1E88E5" />
+                                    <!--<TextBlock Text=" mg"
+FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 加速度 Y -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="1">
+                                    <TextBlock
+                                        Text="Ired："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding IredText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#43A047" />
+                                    <!--<TextBlock Text=" mg"
+FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 加速度 Z -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="2">
+                                    <TextBlock
+                                        Text="Spo2："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding Spo2Text}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#E53935" />
+                                    <!--<TextBlock Text=" mg"
+FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 角速度 X -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="3">
+                                    <TextBlock
+                                        Text="Hr："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding HrText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#1E88E5" />
+                                    <!--<TextBlock Text=" mg"
+FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+
+
+
+                            </Grid>
                         </Border>
                         <Border
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="0,5,0,5"
+                            Padding="10"
+                            Background="#CECECE"
+                            CornerRadius="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                            
+
+
+                                <!-- 加速度 X -->
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 0" Grid.Column="0">
+                                    <TextBlock
+                                        Text="Acc X："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding AccXText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#1E88E5" />
+                                    <!--<TextBlock Text=" mg"
+                       FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 加速度 Y -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="1">
+                                    <TextBlock
+                                        Text="Acc Y："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding AccYText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#43A047" />
+                                    <!--<TextBlock Text=" mg"
+                       FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 加速度 Z -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="2">
+                                    <TextBlock
+                                        Text="Acc Z："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding AccZText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#E53935" />
+                                    <!--<TextBlock Text=" mg"
+                       FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 角速度 X -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="3">
+                                    <TextBlock
+                                        Text="Groy X："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding GyroXText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#1E88E5" />
+                                    <!--<TextBlock Text=" mg"
+                       FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 角速度 Y -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="4">
+                                    <TextBlock
+                                        Text="Groy Y："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding GyroYText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#43A047" />
+                                    <!--<TextBlock Text=" mg"
+                       FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                                <!-- 角速度 Z -->
+                                <StackPanel
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" Grid.Column="5">
+                                    <TextBlock
+                                        Text="Groy Z："
+                                        FontSize="15"
+                                        FontFamily="Segoe UI Semibold"
+                                        Foreground="#555" />
+                                    <TextBlock
+                                        Text="{Binding GyroZText}"
+                                        FontSize="18"
+                                        FontFamily="Consolas"
+                                        FontWeight="Bold"
+                                        Foreground="#E53935" />
+                                    <!--<TextBlock Text=" mg"
+                       FontSize="13" FontFamily="Segoe UI" Foreground="#777" Margin="4,0,0,0"/>-->
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+
+
+                        <!--<Border
                             Grid.Row="1"
                             Grid.Column="1"
                             Margin="0,5,0,5"
@@ -323,7 +560,7 @@
                                 IsReadOnly="True"
                                 TextAlignment="Center" />
 
-                        </Border>
+                        </Border>-->
                     </Grid>
                 </Border>
             </Grid>

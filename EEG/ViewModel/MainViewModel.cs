@@ -18,7 +18,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
+using System.Windows.Threading;
 using Windows.Devices.Bluetooth;
 
 
@@ -50,7 +52,7 @@ namespace EEG.ViewModel
 
             InitChart();
             DealBleCallback();
-
+            init_timer();
 
         }
         public void DealBleCallback()
@@ -62,6 +64,7 @@ namespace EEG.ViewModel
                 {
                     KsEEG.ConnectState = false;
                     BleImageSource = "/Picture/关闭蓝牙_turn-off-bluetooth.png";
+                    HeadImageSource="/Picture/头部脱落2.png";
                     Debug.WriteLine("已断开连接");
                 });
             };
@@ -118,10 +121,10 @@ namespace EEG.ViewModel
 
                     JArray channel_1 = (JArray)json["channel_1"];
                     JArray channel_2 = (JArray)json["channel_2"];
-                    Debug.WriteLine("原始数据： " + channel_1.ToString() + "-----" + channel_2.ToString());
+                    //Debug.WriteLine("原始数据： " + channel_1.ToString() + "-----" + channel_2.ToString());
                     RawDataChart.addPointArray(channel_1, channel_2);
 
-                    Debug.WriteLine("收到原始数据: " + json.ToString());
+                    //Debug.WriteLine("收到原始数据: " + json.ToString());
                 });
             };
 
@@ -137,7 +140,7 @@ namespace EEG.ViewModel
                     double gamma = (double)json["gamma"];
                     BrainwaveChart.addPointNum(delta, theta, alpha, beta, gamma);
 
-                    Debug.WriteLine("收到频域数据: " + json.ToString());
+                    //Debug.WriteLine("收到频域数据: " + json.ToString());
                 });
             };
 
@@ -148,7 +151,7 @@ namespace EEG.ViewModel
                     if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     double emotion = (double)json["emotion"];
                     EmotionChart.addPointNum(emotion);
-                    Debug.WriteLine("收到情绪数据: " + json.ToString());
+                    //Debug.WriteLine("收到情绪数据: " + json.ToString());
                 });
             };
 
@@ -168,7 +171,7 @@ namespace EEG.ViewModel
                     MeditationChart.addPointNum(mindful);
                     TiredChart.addPointNum(stress);
 
-                    Debug.WriteLine("收到特征数据: " + json.ToString());
+                    //Debug.WriteLine("收到特征数据: " + json.ToString());
                 });
             };
 
@@ -177,13 +180,27 @@ namespace EEG.ViewModel
                 RunOnUI(() =>
                 {
                     if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
-                    JArray red = (JArray)json["red"];
-                    JArray ired = (JArray)json["ired"];
-                    JArray spo2 = (JArray)json["spo2"];
-                    JArray hr = (JArray)json["hr"];
-                    MAX30102_INF = $"PPG: R={(double)json["red"].First:F0} IR={(double)json["ired"].First:F0} " +
-               $"SpO₂={(double)json["spo2"].First:F1}% HR={(double)json["hr"].First:F0}bpm";
-                    Debug.WriteLine("收到 PPG 数据: " + json.ToString());
+                JArray red = (JArray)json["red"];
+                JArray ired = (JArray)json["ired"];
+                int spo2 = 0;
+                int hr = 0;
+                if (json.ContainsKey("spo2"))
+                {
+                    spo2 = (int)json["spo2"];
+                    hr = (int)json["hr"];
+
+                    }
+                    _redTemp = (double)red.First();
+                    _iredTemp = (double)ired.First();
+                    _spo2Temp = spo2;
+                    _hrTemp = hr;
+
+                    //RedText= red.First().ToString();
+                    //IredText=ired.First().ToString();
+
+                    //Spo2Text=spo2.ToString();
+                    //HrText= hr.ToString();
+
                 });
             };
 
@@ -191,11 +208,28 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
-                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
-                    MPU6050_INF = $"加速度: X={(double)data["accX"].First:F2}, Y={(double)data["accY"].First:F2}," +
-$" Z={(double)data["accZ"].First:F2}  陀螺仪: X={(double)data["gyroX"].First:F2}," +
-$" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
-                    Debug.WriteLine("收到 MPU 数据: " + data.ToString());
+                    if (!IsLeadoff) return;
+                    // 如果头部脱落，跳过数据处理
+
+
+                    _accxTemp = ((double)data["acc_x"].First);
+                    _accyTemp = ((double)data["acc_y"].First);
+                    _acczTemp = ((double)data["acc_z"].First);
+                    _gyroxTemp = ((double)data["gyro_x"].First);
+                    _gyroyTemp = ((double)data["gyro_y"].First);
+                    _gyrozTemp = ((double)data["gyro_z"].First);
+
+
+
+                    //AccXText = ((double)data["acc_x"].First).ToString();
+                    //AccYText=((double)data["acc_y"].First).ToString();
+                    //AccZText=((double)data["acc_z"].First).ToString();
+                    //GyroXText = ((double)data["gyro_x"].First).ToString();
+                    //GyroYText = ((double)data["gyro_y"].First).ToString();
+                    //GyroZText=((double)data["gyro_z"].First).ToString();
+
+
+                    //Debug.WriteLine("收到 MPU 数据: " + data.ToString());
                 });
             };
 
@@ -206,7 +240,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
                     if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     JArray blink = (JArray)json["blink"];
                     BlinkChart.addPointArray(blink);
-                    Debug.WriteLine("收到眨眼数据: " + json.ToString());
+                    //Debug.WriteLine("收到眨眼数据: " + json.ToString());
                 });
             };
 
@@ -217,7 +251,7 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
                     if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     JArray gnash = (JArray)json["gnash"];
                     GnashChart.addPointArray(gnash);
-                    Debug.WriteLine("收到咬牙数据: " + json.ToString());
+                    //Debug.WriteLine("收到咬牙数据: " + json.ToString());
                 });
             };
         }
@@ -373,27 +407,177 @@ $" Y={(double)data["gyroY"].First:F2}, Z={(double)data["gyroZ"].First:F2}";
         }
 
 
-        private string _MAX30102_INF;
-        public string MAX30102_INF
+        // ======================
+        // 临时缓存变量
+        // ======================
+
+        private double _redTemp = 0.0;
+        private double _iredTemp = 0.0;
+        private int _spo2Temp = 0;
+        private int _hrTemp = 0;
+        private double _accxTemp = 0.0;
+        private double _accyTemp = 0.0;
+        private double _acczTemp = 0.0;
+        private double _gyroxTemp = 0.0;
+        private double _gyroyTemp = 0.0;
+        private double _gyrozTemp = 0.0;
+        // ======================
+        // 定时器
+        // ======================
+
+        private  DispatcherTimer _updateTimer;
+        private const int TimerIntervalMs = 500; // 每200毫秒更新一次UI，可以根据需要调整
+
+        private void UpdateTimer_Tick(object sender, EventArgs e)
         {
-            get { return _MAX30102_INF; }
+            if (_updateTimer != null)
+            {
+                if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
+                // 更新 UI 绑定属性
+                RedText = _redTemp.ToString("F2"); // 保留两位小数
+                IredText = _iredTemp.ToString("F2");
+                Spo2Text = _spo2Temp.ToString();
+                HrText = _hrTemp.ToString();
+                AccXText = _accxTemp.ToString();
+                AccYText = _accyTemp.ToString();
+                AccZText = _acczTemp.ToString();
+                GyroXText = _gyroxTemp.ToString();
+                GyroYText = _gyroyTemp.ToString();
+                GyroZText = _gyrozTemp.ToString();
+            }
+            // （可选）如果你希望在每次更新后执行某些操作，可以在这里添加
+        }
+        public void init_timer()
+        {
+            // 初始化定时器
+            _updateTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(TimerIntervalMs)
+            };
+            _updateTimer.Tick += UpdateTimer_Tick;
+
+            // 启动定时器
+            _updateTimer.Start();
+        }
+
+        // 第一个 Border 中的传感器数据（可能是 PPG/血氧相关）
+        private string _redText="None";
+        private string _iredText = "None";
+        private string _spo2Text = "None";
+        private string _hrText = "None";
+
+        // 第二个 Border 中的传感器数据（可能是加速度计/陀螺仪相关）
+        private string _accXText = "None";
+        private string _accYText = "None";
+        private string _accZText = "None";
+        private string _gyroXText = "None";  // 注意：可能是 "Gyro X" 的拼写错误（陀螺仪 X 轴）
+        private string _gyroYText = "None";  // 同理，可能是 "Gyro Y"
+        private string _gyroZText = "None";  // 同理，可能是 "Gyro Z"
+
+
+        // 第一个 Border：PPG/血氧相关数据
+        public string RedText
+        {
+            get => _redText;
             set
             {
-                _MAX30102_INF = value;
-                RaisePropertyChanged(() => MAX30102_INF);
+                _redText = value;
+                RaisePropertyChanged();
             }
         }
 
-        private string _MPU6050_INF;
-        public string MPU6050_INF
+        public string IredText
         {
-            get { return _MPU6050_INF; }
+            get => _iredText;
             set
             {
-                _MPU6050_INF = value;
-                RaisePropertyChanged(() => MPU6050_INF);
+                _iredText = value;
+                RaisePropertyChanged();
             }
         }
+
+        public string Spo2Text
+        {
+            get => _spo2Text;
+            set
+            {
+                _spo2Text = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string HrText
+        {
+            get => _hrText;
+            set
+            {
+                _hrText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        // 第二个 Border：加速度计/陀螺仪相关数据
+        public string AccXText
+        {
+            get => _accXText;
+            set
+            {
+                _accXText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string AccYText
+        {
+            get => _accYText;
+            set
+            {
+                _accYText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string AccZText
+        {
+            get => _accZText;
+            set
+            {
+                _accZText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string GyroXText  // 建议修正为 GyroXText（更符合命名规范）
+        {
+            get => _gyroXText;
+            set
+            {
+                _gyroXText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string GyroYText  // 建议修正为 GyroYText
+        {
+            get => _gyroYText;
+            set
+            {
+                _gyroYText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string GyroZText  // 建议修正为 GyroZText
+        {
+            get => _gyroZText;
+            set
+            {
+                _gyroZText = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
 

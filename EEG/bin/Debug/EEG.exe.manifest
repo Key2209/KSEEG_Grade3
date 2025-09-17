@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EEG.exe" size="370656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EEG.exe" size="376288">
       <assemblyIdentity name="EEG" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ECW3+7SHFvcN+QAswY45AdbdSALKUDN9LTBRya7e72Y=</dsig:DigestValue>
+        <dsig:DigestValue>d//nWKcmj+aGz9NFjlNmGqXcVrsqj5oLz4jKW3GNwoM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,14 +103,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KSEEG_Fversion_Lib.dll" size="38912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KSEEG_Fversion_Lib.dll" size="39424">
       <assemblyIdentity name="KSEEG_Fversion_Lib" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wOFHKgf1Z+AxIBjDGxUerY72gjKBjnO+/J501gT/Juk=</dsig:DigestValue>
+        <dsig:DigestValue>9fxnjdbbpnqq2oPnQf+7LcWnUjYhr43yECqRMqyJ48E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

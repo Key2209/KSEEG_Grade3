@@ -96,8 +96,9 @@ namespace EEG.Tool
         public void EEG_Init()
         {
             // 初始化蓝牙设备，设置工作模式
-            byte[] initParams = { 0b11100011, 0b00000000 };
-            BleManager.init(initParams);
+            byte[] set = new byte[] { (byte)0b11100011, (byte)0b00000000 };
+            
+            BleManager.init(set);
 
         }
 
@@ -181,7 +182,25 @@ namespace EEG.Tool
 
 
 
-
+        private bool _isFilterEnable = true;
+        public bool IsFilterEnable
+            { get => _isFilterEnable; set => _isFilterEnable = value; }
+        private bool _isNotchFilterEnable=true;
+        public bool IsNotchFilterEnable
+        { get => _isNotchFilterEnable; set => _isNotchFilterEnable = value; }
+            private bool _is50Hz=true;
+        public bool Is50Hz
+            { get => _is50Hz; set => _is50Hz = value; }
+        private bool _isOnlyHardware=true;
+        public bool IsOnlyHardware
+            { get => _isOnlyHardware; set => _isOnlyHardware = value; }
+        private int _lightValue=2;
+        public int LightValue
+        { get=>_lightValue; set => _lightValue = value; }
+        private int _magnifyValue=0;
+        public int MagnifyValue
+            { get => _magnifyValue; set => _magnifyValue = value; }
+      
 
 
 
