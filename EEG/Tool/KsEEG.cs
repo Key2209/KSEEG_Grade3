@@ -96,7 +96,7 @@ namespace EEG.Tool
         public void EEG_Init()
         {
             // 初始化蓝牙设备，设置工作模式
-            byte[] set = new byte[] { (byte)0b11111011, (byte)0b00000000 };
+            byte[] set = new byte[] { (byte)0b11111011, (byte)0b00110000 };
             
             BleManager.init(set);
 

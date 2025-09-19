@@ -237,7 +237,7 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
-                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
+                    //if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     JArray blink = (JArray)json["blink"];
                     BlinkChart.addPointArray(blink);
                     //Debug.WriteLine("收到眨眼数据: " + json.ToString());
@@ -248,10 +248,10 @@ namespace EEG.ViewModel
             {
                 RunOnUI(() =>
                 {
-                    if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
+                    //if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
                     JArray gnash = (JArray)json["gnash"];
                     GnashChart.addPointArray(gnash);
-                    //Debug.WriteLine("收到咬牙数据: " + json.ToString());
+                    Debug.WriteLine("收到咬牙数据: " + json.ToString());
                 });
             };
         }
@@ -982,7 +982,7 @@ namespace EEG.ViewModel
 
             BlinkChart = new OxyChart(
                 title: "Blink Signal",
-                xSize: 100, // X 轴窗口长度
+                xSize: 1000, // X 轴窗口长度
                 ySize: 2, // Y 轴范围
                 lineCount: 1,
                 legendTitles: new[] { "Blink" },
@@ -993,7 +993,7 @@ namespace EEG.ViewModel
             BlinkPlotModel.Axes[1].Minimum = -1;
             GnashChart = new OxyChart(
                 title: "Gnash Signal",
-                xSize: 100, // X 轴窗口长度
+                xSize: 1000, // X 轴窗口长度
                 ySize: 2, // Y 轴范围
                 lineCount: 1,
                 legendTitles: new[] { "Gnash" },
