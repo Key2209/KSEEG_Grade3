@@ -235,24 +235,24 @@ namespace EEG.ViewModel
 
             KsEEG.onReceiveBlink += json =>
             {
-                RunOnUI(() =>
-                {
-                    //if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
-                    JArray blink = (JArray)json["blink"];
-                    BlinkChart.addPointArray(blink);
-                    //Debug.WriteLine("收到眨眼数据: " + json.ToString());
-                });
+                //RunOnUI(() =>
+                //{
+                //    //if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
+                //    JArray blink = (JArray)json["blink"];
+                //    BlinkChart.addPointArray(blink);
+                //    //Debug.WriteLine("收到眨眼数据: " + json.ToString());
+                //});
             };
 
             KsEEG.onReceiveGnash += json =>
             {
-                RunOnUI(() =>
-                {
-                    //if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
-                    JArray gnash = (JArray)json["gnash"];
-                    GnashChart.addPointArray(gnash);
-                    Debug.WriteLine("收到咬牙数据: " + json.ToString());
-                });
+                //RunOnUI(() =>
+                //{
+                //    //if (!IsLeadoff) return; // 如果头部脱落，跳过数据处理
+                //    JArray gnash = (JArray)json["gnash"];
+                //    GnashChart.addPointArray(gnash);
+                //    Debug.WriteLine("收到咬牙数据: " + json.ToString());
+                //});
             };
         }
 

@@ -293,18 +293,19 @@
                                 <Grid Grid.Row="4">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
+
+                                        <!--<ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />-->
                                     </Grid.ColumnDefinitions>
                                     <oxy:PlotView Grid.Column="0" Model="{Binding EmotionPlotModel}"
                                   Controller="{Binding EmotionChart.plotController}"
                                   MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Emotion" />
-                                    <oxy:PlotView Grid.Column="1" Model="{Binding BlinkPlotModel}"
+                                    <!--<oxy:PlotView Grid.Column="1" Model="{Binding BlinkPlotModel}"
                                   Controller="{Binding BlinkChart.plotController}"
                                   MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Blink" />
                                     <oxy:PlotView Grid.Column="2" Model="{Binding GnashPlotModel}"
                                   Controller="{Binding GnashChart.plotController}"
-                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Gnash" />
+                                  MouseDoubleClick="PlotView_MouseDoubleClick" Tag="Gnash" />-->
                                 </Grid>
                             </Grid>
                         </ScrollViewer>

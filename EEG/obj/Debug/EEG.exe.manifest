@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EEG.exe" size="384480">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EEG.exe" size="383456">
       <assemblyIdentity name="EEG" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>byDq/fveO5foSssayXZZPezoHJYCWC/viHCZlGxRI0A=</dsig:DigestValue>
+        <dsig:DigestValue>iFJK29RTZE3g++tWBnRu1d9VQG1oi+mZ5ZSLLYS2bG8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
